@@ -1,0 +1,14 @@
+#!/bin/bash
+# prepare my changes
+git add -u :/
+git status
+read -p "OK?"
+git commit
+
+# git push origin
+
+git push github
+
+# For now we just keep a list of nodes under our control for testing purposes.
+# But we encourage an open socieaty, free minds, and liberty!
+# Just let us know and we will work together to setup your node to serve BitDust git sources.

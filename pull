@@ -1,0 +1,6 @@
+#!/bin/bash
+# git pull origin master
+git pull github master
+# As soon as we add more nodes who stores and serve full git repos (with commits history) we will add them here
+# so you can always fetch from many sources and compare/chose active version by your own decision
+git status

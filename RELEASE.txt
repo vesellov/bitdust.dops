@@ -1,0 +1,66 @@
+
+# change to main repo
+cd bitdust
+
+# import fresh code from devel repo on top of main repo files
+./import ../bitdust.devel/
+
+# mark all modified files in git to be commited
+git add -u .
+
+# add all other new files to git manually
+git add .....
+
+# change back to devel repo
+cd ../bitdust.devel
+
+# list commits added to devel repo after last release of main repo was published 
+./history ../bitdust/
+
+# copy and edit commits from HISTORY.TXT into CHANGELOG.txt to make it looking nice
+# then copy CHANGELOG.txt to main repo and add to the commit
+cp CHANGELOG.txt ../bitdust/
+cd ../bitdust/
+git add CHANGELOG.txt
+
+# commit changes in the main repo
+git commit -m "<name of the release>"
+
+# push changes to the main repo
+./push
+
+# switch to latest repo
+cd ../bitdust.latest/
+
+# consume changes from main repo
+./1-build-from ../bitdust
+
+# mark all modified files in git to be commited
+git add -u .
+
+# add all other new files to git manually
+git add .....
+
+# push changes to latest repo
+./2-upload
+
+# update docs repo
+cd ../bitdust.docs/
+./build_api
+./build_settings
+# TODO: ./build_changelog
+
+# push changes to doc repo
+./push
+
+# rebuild the web site repo
+cd ../bitdust.www/
+./build
+./push
+./update
+
+# DONE!!!
+
+
+
+

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "running 'stop'"
+
+bitdust stop
+
+
+exit 0

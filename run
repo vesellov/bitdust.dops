@@ -1,0 +1,27 @@
+#!/bin/bash
+
+IFS=$'\n' read -d '' -r -a nodes < nodes.txt
+# nodes[0]='p2p-id.ru'
+
+echo "target nodes:"
+echo "${nodes[@]}"
+
+echo "target command: $1"
+
+copy_files="./cmd ./exec ./go ./daemon ./reset ./deploy ./idcreate ./run ./loop_bitdust ./sleep_bitdust ./stop_loop ./stop ./up ./see ./states ./pskill"
+delete_files="./cmd ./exec ./pskill"
+
+for node in ${nodes[@]}
+do
+  echo ""
+  echo "----------------------------------------------------"
+  echo "[$node]"
+  echo "scp files to $node ..."
+  scp -q ${copy_files[@]} "$node:"
+  echo "cast 'chmod +x' on files at $node"
+  ssh $node "chmod +x $copy_files"
+  echo "execute [$1] at $node"
+  ssh $node "$1 $node"
+  echo "clean up all files"
+  ssh $node "rm $delete_files"
+done
