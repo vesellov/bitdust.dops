@@ -8,8 +8,8 @@ echo "${nodes[@]}"
 
 echo "target command: $1"
 
-copy_files="./cmd ./exec ./go ./daemon ./reset ./deploy ./idcreate ./run ./loop_bitdust ./sleep_bitdust ./stop_loop ./stop ./up ./see ./states ./pskill"
-delete_files="./cmd ./exec ./pskill"
+copy_files="./cmd ./exec ./go ./daemon ./reset ./deploy ./idcreate ./loop_bitdust ./sleep_bitdust ./stop_loop ./stop ./up ./see ./states ./pskill ./monitor"
+delete_files="./cmd ./exec ./pskill ./loop_bitdust ./sleep_bitdust ./stop_loop"
 
 for node in ${nodes[@]}
 do
@@ -22,6 +22,6 @@ do
   ssh $node "chmod +x $copy_files"
   echo "execute [$1] at $node"
   ssh $node "$1 $node"
-  echo "clean up all files"
+  echo "clean up files"
   ssh $node "rm $delete_files"
 done

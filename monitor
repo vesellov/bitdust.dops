@@ -2,30 +2,16 @@
 
 echo "running 'monitor'"
 
-# ls -la .bitdust/customers/
-# cd ~/bitdust
-# git remote -vv
-
-# echo "suppliers:"
-# cat .bitdust/metadata/supplierids
-# echo
-
-# echo "customers:"
-# cat .bitdust/metadata/customerids
-# echo
-
-# echo "space:"
-# cat .bitdust/metadata/space
-# echo
-
-# echo "used:"
-# cat .bitdust/metadata/spaceused
-# echo
-
-# tail -10 log
-
-./bd storage
-
+echo "================================================================================================"
+hostname
+bitdust id
+echo "------------------------------------------------------------------------------------------------"
 df -h
+bitdust states
+bitdust suppliers
+bitdust customers
+bitdust space
+bitdust id
+echo "DONE"
 
 exit 0

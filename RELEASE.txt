@@ -11,23 +11,30 @@ git add -u .
 # add all other new files to git manually
 git add .....
 
-# change back to devel repo
+# if you removed some files from devel repo - do not forget to also remove it from here and mark to be commited
+# rm ...
+# git add -u . 
+
+# DO NOT COMMIT : change back to devel repo
 cd ../bitdust.devel
 
 # list commits added to devel repo after last release of main repo was published 
 ./history ../bitdust/
 
-# copy and edit commits from HISTORY.TXT into CHANGELOG.txt to make it looking nice
+# copy and edit commits from "bitdust.devel/HISTORY.TXT" into "bitdust.devel/CHANGELOG.txt" and make it looking nice
 # then copy CHANGELOG.txt to main repo and add to the commit
 cp CHANGELOG.txt ../bitdust/
 cd ../bitdust/
 git add CHANGELOG.txt
 
-# commit changes in the main repo
+# now you can commit changes in the main repo
 git commit -m "<name of the release>"
 
 # push changes to the main repo
 ./push
+
+# YOU ARE LIVE NOW!!! Congrats!
+# also need to update "latest repo"
 
 # switch to latest repo
 cd ../bitdust.latest/
