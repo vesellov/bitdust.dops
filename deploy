@@ -1,19 +1,16 @@
 #!/bin/bash
 
+echo "killing 'bitdust.py' process on $1"
 
 ./pskill bitdust.py
 
-echo "running 'reset' on $1"
+
+
+echo "cloning github.com/bitdust-io/devel.git on $1"
 
 rm -rf bitdust
-git clone https://github.com/vesellov/bitdust.devel.git
-# git clone http://gitlab.bitdust.io/devel/bitdust.devel.git
-mv bitdust.devel bitdust
-cd bitdust
-git config --global user.email "vesellov@gmail.com"
-git config --global user.name "Veselin VPS"
-git status
-cd ..
+git clone https://github.com/bitdust-io/devel.git bitdust
+
 
 
 echo "running 'deploy' on $1"
@@ -21,3 +18,8 @@ echo "running 'deploy' on $1"
 cd bitdust
 python bitdust.py deploy
 cd ..
+
+# You will need to create a system wide alias for BitDust on that machine
+# this requires to create a link in a system folder, an so it requires root permissions
+# uncomment this line if you want to run it automatically after deployment finished
+# sudo ln -fs ~/.bitdust/bitdust /usr/local/bin/bitdust

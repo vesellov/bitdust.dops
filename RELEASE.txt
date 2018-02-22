@@ -22,6 +22,13 @@ cd ../bitdust.devel
 ./history ../bitdust/
 
 # copy and edit commits from "bitdust.devel/HISTORY.TXT" into "bitdust.devel/CHANGELOG.txt" and make it looking nice
+cat HISTORY.TXT
+nano CHANGELOG.txt
+
+# update CHANGELOG.txt in the devel repo
+git add CHANGELOG.txt
+git commit -m "updated CHANGELOG, prepare next release"
+
 # then copy CHANGELOG.txt to main repo and add to the commit
 cp CHANGELOG.txt ../bitdust/
 cd ../bitdust/
@@ -36,20 +43,14 @@ git commit -m "<name of the release>"
 # YOU ARE LIVE NOW!!! Congrats!
 # also need to update "latest repo"
 
+# create Pull Request to main repo at : https://github.com/bitdust-io/public
+# Review, Merge
+
+./pull
+
 # switch to latest repo
 cd ../bitdust.latest/
 
-# consume changes from main repo
-./1-build-from ../bitdust
-
-# mark all modified files in git to be commited
-git add -u .
-
-# add all other new files to git manually
-git add .....
-
-# push changes to latest repo
-./2-upload
 
 # update docs repo
 cd ../bitdust.docs/

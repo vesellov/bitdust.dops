@@ -1,7 +1,6 @@
 #!/bin/bash
 
 IFS=$'\n' read -d '' -r -a nodes < nodes.txt
-# nodes[0]='p2p-id.ru'
 
 echo "target nodes:"
 echo "${nodes[@]}"

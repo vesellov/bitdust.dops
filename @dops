@@ -1,15 +1,17 @@
 #!/bin/bash
 
 IFS=$'\n' read -d '' -r -a nodes < nodes.txt
-# nodes[0]='p2p-id.ru'
 
 echo "target nodes:"
 echo "${nodes[@]}"
 
 echo "target command: $1"
 
-copy_files="./cmd ./exec ./go ./daemon ./reset ./deploy ./idcreate ./loop_bitdust ./sleep_bitdust ./stop_loop ./stop ./up ./see ./states ./pskill ./monitor"
-delete_files="./cmd ./exec ./pskill ./loop_bitdust ./sleep_bitdust ./stop_loop"
+copy_files="./exec ./daemon ./reset ./deploy ./idcreate ./stop ./up ./see ./states ./pskill ./monitor"
+# delete_files="./exec ./daemon ./reset ./deploy ./idcreate ./stop ./up ./see ./states ./pskill ./monitor"
+delete_files="./exec ./reset ./idcreate"
+
+# some commands such as "see" or "states" are usefull for monitoring
 
 for node in ${nodes[@]}
 do
@@ -21,7 +23,9 @@ do
   echo "cast 'chmod +x' on files at $node"
   ssh $node "chmod +x $copy_files"
   echo "execute [$1] at $node"
+  echo ""
   ssh $node "$1 $node"
+  echo ""
   echo "clean up files"
   ssh $node "rm $delete_files"
 done
