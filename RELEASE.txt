@@ -37,19 +37,15 @@ git add CHANGELOG.txt
 # now you can commit changes in the main repo
 git commit -m "<name of the release>"
 
-# push changes to the main repo
+# push changes to your main repo - you must have a Fork of bitdust.public !!!
 ./push
-
-# YOU ARE LIVE NOW!!! Congrats!
-# also need to update "latest repo"
 
 # create Pull Request to main repo at : https://github.com/bitdust-io/public
 # Review, Merge
+# YOU ARE LIVE NOW!!! Congrats!!!
 
 ./pull
-
-# switch to latest repo
-cd ../bitdust.latest/
+./push
 
 
 # update docs repo
