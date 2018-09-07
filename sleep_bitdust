@@ -1,5 +1,0 @@
-#!/bin/bash
-
-echo "running 'sleep_bitdust'"
-
-sleep 60000

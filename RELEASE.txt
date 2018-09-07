@@ -15,8 +15,18 @@ git add .....
 # rm ...
 # git add -u . 
 
+# check again to be sure you didn't missed to remove / add some other files
+cd ..
+diff --brief -r bitdust bitdust.devel/ | grep -v ".git" | grep -v "__pycache__" | grep -v ".pyc" | grep -v ".DS_Store" | grep "Only in"
+Only in bitdust: LICENSE
+Only in bitdust.devel/: deploy
+Only in bitdust: import
+Only in bitdust.devel/: release
+Only in bitdust.devel/: scripts
+Only in bitdust.devel/: tests
+
 # DO NOT COMMIT : change back to devel repo
-cd ../bitdust.devel
+cd bitdust.devel
 
 # list commits added to devel repo after last release of main repo was published 
 ./history ../bitdust/

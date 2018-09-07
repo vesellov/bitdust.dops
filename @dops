@@ -7,7 +7,7 @@ echo "${nodes[@]}"
 
 echo "target command: $1"
 
-copy_files="./exec ./daemon ./reset ./deploy ./idcreate ./stop ./up ./see ./states ./pskill ./monitor"
+copy_files="./exec ./grepnkill ./daemon ./reset ./deploy ./idcreate ./stop ./up ./see ./states ./pskill ./monitor"
 # delete_files="./exec ./daemon ./reset ./deploy ./idcreate ./stop ./up ./see ./states ./pskill ./monitor"
 delete_files="./exec ./reset ./idcreate"
 
